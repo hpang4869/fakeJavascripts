@@ -1,0 +1,2 @@
+# fakeJavascripts
+for testing
