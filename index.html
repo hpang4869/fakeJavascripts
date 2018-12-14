@@ -58,12 +58,16 @@ A(k,ka.getItem("a-font-class"));n.declare("a-event-revised-handling",!1);n.decla
           
 <script type="text/javascript" charset="utf-8">
 var addPaymentCompleted = false;
+console.log("1");
 var eventHandlers = {
   "AuthTimeout": function(eventObj) {
+    console.log("2");
     return PaymentsPortal2.events.STOP_EVENT_PROCESSING;
   },
   "WidgetAction": function(eventObj) {
+    console.log("3");
     if (eventObj.widgetActionType === "add-payment-instrument") {
+      console.log("4");
       var newInstrumentId = eventObj.paymentInstrumentId;
       var widgetAction = eventObj.widgetAction;
       // TODO: Read from PPWS response instead https://sim.amazon.com/issues/PPUX-8432
@@ -71,8 +75,10 @@ var eventHandlers = {
         "newId":newInstrumentId,
         "action":widgetAction.indexOf("credit") > -1 ? "Credit_Card" : "Bank_Account"
       };
+      console.log("5");
     (function(){
 
+      console.log("6");
       window.opener.postMessage(messageObject, '*');
       addPaymentCompleted = true;
       window.close();
